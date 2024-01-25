@@ -1,0 +1,18 @@
+module DataMemory_Test();
+reg Clock, MemWrite, MemRead;
+  reg[25:10] Address;
+reg[15:0] WriteData;
+wire[15:0] ReadData;
+
+initial 
+begin
+#0 Clock=1'b1;
+#5 MemWrite=1'b1; Address=16'b000000000000000; WriteData=16'b0011001100110011; MemRead=1'b0;
+#5 Clock=1'b1;
+#5 Clock=1'b0;MemWrite=1'b0;
+#5 MemRead=1'b1; Address=16'b0000000000001001;
+#5 $finish;
+end
+
+  DataMemory DM(Address, WriteData, Clock, MemWrite, MemRead, ReadData);
+endmodule

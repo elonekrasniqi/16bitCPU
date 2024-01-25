@@ -1,0 +1,14 @@
+module InstructionMemory_Test();
+  reg[25:10] PCAddress;
+wire[15:0] Instruction;
+initial
+begin
+#0 PCAddress=16'd10;
+#5 PCAddress=16'd12;
+#5 PCAddress=16'd14;
+#5 PCAddress=16'd16;
+#5 PCAddress=16'd18;
+#5 $finish;
+end
+  InstructionMemory IM(PCAddress,Instruction);
+endmodule

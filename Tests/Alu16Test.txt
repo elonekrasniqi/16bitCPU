@@ -1,0 +1,52 @@
+
+module testALU16bit;
+
+  reg [15:0] A, B;
+    reg CIN, LESS, BInvert;
+    reg [1:0] Operation;
+    wire Zero, Overflow, CarryOut;
+  wire [15:0] Result;
+  initial
+    
+    $monitor("A=%16b, B=%16b, CIN=%b, LESS=%b, BInvert=%b, Operation=%2b, Result=%16b, COUT=%b", A, B, CIN, LESS, AInvert, BInvert, Operation, Result, CarryOut);
+
+
+  
+   ALU16 Test(.A(A),
+        .B(B),
+              .BNegate(BInvert),
+              .Op(Operation),
+        .Zero(Zero),
+        .Result(Result),
+        .Overflow(Overflow),
+              .CarryOut(CarryOut));
+
+  
+  initial
+begin
+ //AND
+#0 A=1'b0; B=1'b0; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b00;
+#10 A=1'b0; B=1'b1; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b00;
+#10 A=1'b1; B=1'b0; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b00;
+#10 A=1'b1; B=1'b1; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b00;
+//OR
+#10 A=1'b0; B=1'b0; CIN=1'b0; LESS=1'b0; BInvert=1'b0; Operation=2'b01;
+#10 A=1'b0; B=1'b1; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b01;
+#10 A=1'b1; B=1'b0; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b01;
+#10 A=1'b1; B=1'b1; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b01;
+//ADD
+#10 A=1'b0; B=1'b0; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b10;
+#10 A=1'b0; B=1'b1; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b10;
+#10 A=1'b1; B=1'b0; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b10;
+#10 A=1'b1; B=1'b1; CIN=1'b0; LESS=1'b0;  BInvert=1'b0; Operation=2'b10;
+#10 A=1'b1; B=1'b1; CIN=1'b1; LESS=1'b0;  BInvert=1'b0; Operation=2'b10;
+//SUB
+#10 A=1'b0; B=1'b0; CIN=1'b1; LESS=1'b0;  BInvert=1'b1; Operation=2'b10;
+#10 A=1'b0; B=1'b1; CIN=1'b1; LESS=1'b0;  BInvert=1'b1; Operation=2'b10;
+#10 A=1'b1; B=1'b0; CIN=1'b1; LESS=1'b0;  BInvert=1'b1; Operation=2'b10;
+#10 A=1'b1; B=1'b1; CIN=1'b1; LESS=1'b0;  BInvert=1'b1; Operation=2'b10;
+
+  #10 $finish;
+end
+  
+endmodule
