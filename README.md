@@ -6,4 +6,4 @@ Project is developed in Verilog
 
 ## Authors
 * Elonë Krasniqi
-* Brikena Kastrati - https://github.com/brikenakastrati
+* [Brikena Kastrati] ( https://github.com/brikenakastrati)
