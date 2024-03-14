@@ -5,5 +5,5 @@ CPU16-bit CPU created on EdaPlayground using Verilog as part of a project for th
 Project is developed in Verilog
 
 ## Authors
-* Elonë Krasniqi
+* [Elonë Krasniqi](https://github.com/elonekrasniqi)
 * [Brikena Kastrati]( https://github.com/brikenakastrati)
